@@ -90,4 +90,17 @@ addEventListener("DOMContentLoaded", function(){
         isGameOver=true;
     }
 
+    function checkforWin(){
+        let matches=0;
+        for(let i = 0; i < tiles.length; i++){
+            if(tiles[i].classList.contains('flag') && tiles[i].classList.contains('bomb')){
+                matches++;
+            }
+            if(matches===bombAmount){
+                screen.innerHTML="Ad Victotriam!";
+                isGameOver=true;
+            }
+        }
+    }
+
 })
