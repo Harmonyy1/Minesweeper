@@ -18,17 +18,26 @@ body {
 }
 
 .tile {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     background: slategray;
+    border-style: outset;
+    border-width: 3px;
 }
 
 .bomb{
-    background: red;
+    
 }
 
 .clear {
-    background: green;
+    
+}
+
+.checked {
+    width: 50px;
+    height: 50px;
+    border-style: none !important;
+    background: rgb(175, 175, 175);
 }
 
 .screen {
