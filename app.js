@@ -60,6 +60,26 @@ addEventListener("DOMContentLoaded", function(){
     createBoard();
 
 
+function click(tile) {
+    let currentId = title.id;
+    if(isGameOver) return;
+    if(tile.classList.contains('checked') || tile.classList.contains('flag')) return;
+    if(tile.classList.contains('bomb')) {
+        gameOver(tile.id);
+    }else {
+        let total = tile.getAttribute('data');
+        if(total != 0) {
+            tile.classList.add('checked')
+            tile.innerHTML = total;
+            return;
+        }
+        checkTile(tile, currentId);
+    }
+    tile.classList.add('checked');
+    //&& = and, ungefär *
+    //|| = or, ungefär +
+}
+
 
     function addFlag(tile){
 
@@ -113,7 +133,41 @@ addEventListener("DOMContentLoaded", function(){
                 const newTile = document.getElementById(newId);
                 click(newTile);
             }   ///------------------We are here!!!
-        })
+            if (currentId > 9 && !isRightEdge) {
+                const newId = squares[parseInt(currentId) +1 -width].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            }
+            if (currentId > 10) {
+                const newId = squares[parseInt(currentId -width)].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            }
+            if (currentId > 11 && !isLeftEdge) {
+                const newId = squares[parseInt(currentId) -1 -width].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            }
+            if (currentId < 99 && !isRightEdge) {
+                const newId = squares[parseInt(currentId) +1].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            }
+            if (currentId < 90 && !isLeftEdge) {
+                const newId = squares[parseInt(currentId) -1 +width].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            }
+            if (currentId < 88 && !isRightEdge) {
+                const newId = squares[parseInt(currentId) +1 +width].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            }
+            if (currentId < 89) {
+                const newId = squares[parseInt(currentId) +width].id
+                const newTile = document.getElementById(newId)
+                click(newTile)
+            } 
+        },10);
     }
-
 })
