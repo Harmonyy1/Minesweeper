@@ -86,7 +86,7 @@ addEventListener("DOMContentLoaded", function(){
             }
         })
         tile.innerHTML="💥";
-        screen.innerHTML="Game over! Game over! Game over";
+        screen.innerHTML="Game over! Game over! Game over!";
         isGameOver=true;
     }
 
